@@ -80,45 +80,33 @@ export default function HomeScreen() {
       >
         {searchValue => (
           <>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-evenly"
-              }}
-            >
-              <div style={{ display: "flex" }}>
+            <S.FilterContainer>
+              <S.TypeFilterContainer>
                 <MultipleSelect
                   options={data.types[0].types}
                   label="Types"
                   handleChange={handleTypeChange}
                   value={type}
                 />
-                <div style={{ alignSelf: "flex-end", paddingBottom: 12 }}>
+                <S.CheckboxContainer>
                   <Checkbox
                     label="Strict Type Match"
                     checked={strictType}
                     handleChange={handleStrictTypeChange}
                   />
-                </div>
-              </div>
+                </S.CheckboxContainer>
+              </S.TypeFilterContainer>
               <MultipleSelect
                 options={data.types[0].types}
                 label="Weaknesses"
                 handleChange={handleWeaknessChange}
                 value={weakness}
               />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around"
-              }}
-            >
+            </S.FilterContainer>
+            <S.ButtonContainer>
               <Button onClick={handleClearType}>Clear Type Filter</Button>
               <Button onClick={() => handleWeaknessChange([])}>Clear Weakness Filter</Button>
-            </div>
+            </S.ButtonContainer>
             <S.Grid>
               {data.pokemonMany
                 .filter(pokemon =>
