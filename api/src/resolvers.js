@@ -16,8 +16,17 @@ exports.resolvers = {
       return nextEvolutionIDs.map(id => context.pokemon[id])
     },
   },
+  Types: {
+    types: (parent, args, context, info) => {
+      const types = parent
+      console.log('CONTEXT: ', context.types)
+      console.log('TYPES: ', types)
+      return parent
+    }
+  },
   Query: {
     pokemonMany: (parent, args, context, info) => _.values(context.pokemon),
     pokemonOne: (parent, args, context, info) => context.pokemon[args.id],
+    types: (parent, args, context, info) => _.values(context.types)
   },
 }

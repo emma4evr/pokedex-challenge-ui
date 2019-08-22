@@ -22,8 +22,13 @@ exports.typeDefs = gql`
     next_evolution: [Pokemon!]
   }
 
+  type Types {
+    types: [String!]!
+  }
+
   type Query {
     pokemonMany: [Pokemon!]!
     pokemonOne(id: ID!): Pokemon
+    types: [Types!]!
   }
 `

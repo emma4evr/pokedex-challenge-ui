@@ -9,7 +9,8 @@ const server = new ApolloServer({
   resolvers,
   context: () => {
     const data = fs.readFileSync('./src/pokemon.json')
-    return { pokemon: JSON.parse(data.toString()) }
+    const typeData = fs.readFileSync('./src/types.json')
+    return { pokemon: JSON.parse(data.toString()), types: JSON.parse(typeData.toString()) }
   },
 })
 
